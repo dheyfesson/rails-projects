@@ -1,0 +1,1903 @@
+  [1m[36m (126.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (134.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateJobs (20141018172657)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "jobs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "company" varchar(255), "url" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141018172657"]]
+  [1m[35m (95.1ms)[0m  commit transaction
+Migrating to CreateCategories (20141018175756)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141018175756"]]
+  [1m[35m (205.9ms)[0m  commit transaction
+Migrating to AddCategoryIdToJobs (20141018175921)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "jobs" ADD "category_id" integer
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141018175921"]]
+  [1m[35m (97.0ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-07 01:00:26 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JobsController#index as HTML
+  [1m[35mJob Load (0.3ms)[0m  SELECT "jobs".* FROM "jobs"   ORDER BY created_at DESC
+  Rendered jobs/index.html.haml within layouts/application (3.3ms)
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 2115ms (Views: 2102.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/jobs.css?body=1" for 127.0.0.1 at 2015-03-07 01:00:28 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-07 01:00:29 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:29 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:29 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:29 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:29 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:29 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:29 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:29 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:29 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:29 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:29 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:29 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:29 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:29 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:29 -0300
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:29 -0300
+
+
+Started GET "/assets/jobs.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:29 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:29 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:29 -0300
+
+
+Started GET "/jobs/new" for 127.0.0.1 at 2015-03-07 01:00:32 -0300
+Processing by JobsController#new as HTML
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered jobs/_form.html.haml (33.1ms)
+  Rendered jobs/new.html.haml within layouts/application (37.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 118ms (Views: 113.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:32 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:32 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:32 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:32 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:32 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:32 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:32 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:32 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:32 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:32 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:32 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:32 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:32 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:32 -0300
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:32 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-07 01:00:32 -0300
+
+
+Started POST "/jobs" for 127.0.0.1 at 2015-03-07 01:01:01 -0300
+Processing by JobsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sLCGL+jqODZYt06L/r55x9qJjO/B/mZq9bqjOgEQOkI=", "job"=>{"title"=>"web developer", "description"=>"dusaikhslahyuasnkashdiuaso", "company"=>"google", "url"=>"#"}, "commit"=>"Create Job"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "jobs" ("company", "created_at", "description", "title", "updated_at", "url") VALUES (?, ?, ?, ?, ?, ?)[0m  [["company", "google"], ["created_at", "2015-03-07 04:01:01.090389"], ["description", "dusaikhslahyuasnkashdiuaso"], ["title", "web developer"], ["updated_at", "2015-03-07 04:01:01.090389"], ["url", "#"]]
+  [1m[35m (244.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/jobs/1
+Completed 302 Found in 256ms (ActiveRecord: 245.0ms)
+
+
+Started GET "/jobs/1" for 127.0.0.1 at 2015-03-07 01:01:01 -0300
+Processing by JobsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mJob Load (0.3ms)[0m  [1mSELECT  "jobs".* FROM "jobs"  WHERE "jobs"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered jobs/show.html.haml within layouts/application (2.5ms)
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories"
+Completed 200 OK in 93ms (Views: 89.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/jobs.css?body=1" for 127.0.0.1 at 2015-03-07 01:01:01 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-07 01:01:01 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:01 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:01 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:01 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:01 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:01 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:01 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:01 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:01 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:01 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:01 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:01 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:01 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:01 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:01 -0300
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:01 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:01 -0300
+
+
+Started GET "/assets/jobs.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:01 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:01 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-07 01:01:14 -0300
+Processing by JobsController#index as HTML
+  [1m[36mJob Load (0.2ms)[0m  [1mSELECT "jobs".* FROM "jobs"   ORDER BY created_at DESC[0m
+  Rendered jobs/index.html.haml within layouts/application (2.4ms)
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories"
+Completed 200 OK in 81ms (Views: 79.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-07 01:01:14 -0300
+
+
+Started GET "/assets/jobs.css?body=1" for 127.0.0.1 at 2015-03-07 01:01:14 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:15 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:15 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:15 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:15 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:15 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:15 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:15 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:15 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:15 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:15 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:15 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:15 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:15 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:15 -0300
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:15 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:15 -0300
+
+
+Started GET "/assets/jobs.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:15 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:15 -0300
+
+
+Started GET "/jobs/new" for 127.0.0.1 at 2015-03-07 01:01:19 -0300
+Processing by JobsController#new as HTML
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  Rendered jobs/_form.html.haml (7.1ms)
+  Rendered jobs/new.html.haml within layouts/application (8.5ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "categories".* FROM "categories"
+Completed 200 OK in 88ms (Views: 86.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/jobs.css?body=1" for 127.0.0.1 at 2015-03-07 01:01:19 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-07 01:01:19 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:19 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:19 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:19 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:19 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:19 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:19 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:19 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:19 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:19 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:19 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:19 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:19 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:19 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:19 -0300
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:19 -0300
+
+
+Started GET "/assets/jobs.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:19 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:19 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:19 -0300
+
+
+Started POST "/jobs" for 127.0.0.1 at 2015-03-07 01:01:51 -0300
+Processing by JobsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sLCGL+jqODZYt06L/r55x9qJjO/B/mZq9bqjOgEQOkI=", "job"=>{"title"=>"web designer", "description"=>"dsadnaksdhipasuhdnkasdnausgdyoall", "company"=>"adobe", "url"=>"test"}, "commit"=>"Create Job"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "jobs" ("company", "created_at", "description", "title", "updated_at", "url") VALUES (?, ?, ?, ?, ?, ?)  [["company", "adobe"], ["created_at", "2015-03-07 04:01:51.518082"], ["description", "dsadnaksdhipasuhdnkasdnausgdyoall"], ["title", "web designer"], ["updated_at", "2015-03-07 04:01:51.518082"], ["url", "test"]]
+  [1m[36m (235.8ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/jobs/2
+Completed 302 Found in 241ms (ActiveRecord: 236.6ms)
+
+
+Started GET "/jobs/2" for 127.0.0.1 at 2015-03-07 01:01:51 -0300
+Processing by JobsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mJob Load (0.1ms)[0m  SELECT  "jobs".* FROM "jobs"  WHERE "jobs"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered jobs/show.html.haml within layouts/application (0.5ms)
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 79ms (Views: 77.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/jobs.css?body=1" for 127.0.0.1 at 2015-03-07 01:01:52 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:52 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:52 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:52 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:52 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-07 01:01:52 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:52 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:52 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:52 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:52 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:52 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:52 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:52 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:52 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:52 -0300
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:52 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:52 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:52 -0300
+
+
+Started GET "/assets/jobs.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:52 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:52 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-07 01:01:54 -0300
+Processing by JobsController#index as HTML
+  [1m[35mJob Load (0.2ms)[0m  SELECT "jobs".* FROM "jobs"   ORDER BY created_at DESC
+  Rendered jobs/index.html.haml within layouts/application (1.2ms)
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 78ms (Views: 77.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/jobs.css?body=1" for 127.0.0.1 at 2015-03-07 01:01:54 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-07 01:01:54 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:54 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:54 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:54 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:54 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:54 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:54 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:54 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:54 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:54 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:54 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:54 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:54 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:54 -0300
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:54 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:54 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:54 -0300
+
+
+Started GET "/assets/jobs.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:54 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:54 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-07 01:01:58 -0300
+Processing by JobsController#index as HTML
+  [1m[35mJob Load (0.3ms)[0m  SELECT "jobs".* FROM "jobs"   ORDER BY created_at DESC
+  Rendered jobs/index.html.haml within layouts/application (2.3ms)
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 97ms (Views: 94.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-07 01:01:59 -0300
+
+
+Started GET "/assets/jobs.css?body=1" for 127.0.0.1 at 2015-03-07 01:01:59 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:59 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:59 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:59 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:59 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:59 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:59 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:59 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:59 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:59 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:59 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:59 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:59 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:59 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:59 -0300
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:59 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:59 -0300
+
+
+Started GET "/assets/jobs.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:59 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-07 01:01:59 -0300
+
+
+Started GET "/jobs/new" for 127.0.0.1 at 2015-03-07 01:02:01 -0300
+Processing by JobsController#new as HTML
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered jobs/_form.html.haml (6.2ms)
+  Rendered jobs/new.html.haml within layouts/application (7.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 89ms (Views: 88.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/jobs.css?body=1" for 127.0.0.1 at 2015-03-07 01:02:01 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-07 01:02:01 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:01 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:01 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:01 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:01 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:01 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:01 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:01 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:01 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:01 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:01 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:01 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:01 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:01 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:01 -0300
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:01 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:01 -0300
+
+
+Started GET "/assets/jobs.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:01 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:01 -0300
+
+
+Started POST "/jobs" for 127.0.0.1 at 2015-03-07 01:02:37 -0300
+Processing by JobsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sLCGL+jqODZYt06L/r55x9qJjO/B/mZq9bqjOgEQOkI=", "job"=>{"title"=>"DBA", "description"=>"sadhaslnauygrlsakcjnudguefdsbius", "company"=>"google", "url"=>"das"}, "commit"=>"Create Job"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "jobs" ("company", "created_at", "description", "title", "updated_at", "url") VALUES (?, ?, ?, ?, ?, ?)[0m  [["company", "google"], ["created_at", "2015-03-07 04:02:37.653819"], ["description", "sadhaslnauygrlsakcjnudguefdsbius"], ["title", "DBA"], ["updated_at", "2015-03-07 04:02:37.653819"], ["url", "das"]]
+  [1m[35m (221.4ms)[0m  commit transaction
+Redirected to http://localhost:3000/jobs/3
+Completed 302 Found in 225ms (ActiveRecord: 221.8ms)
+
+
+Started GET "/jobs/3" for 127.0.0.1 at 2015-03-07 01:02:37 -0300
+Processing by JobsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mJob Load (0.1ms)[0m  [1mSELECT  "jobs".* FROM "jobs"  WHERE "jobs"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered jobs/show.html.haml within layouts/application (0.6ms)
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories"
+Completed 200 OK in 73ms (Views: 71.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/jobs.css?body=1" for 127.0.0.1 at 2015-03-07 01:02:38 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:38 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:38 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:38 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:38 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:38 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-07 01:02:38 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:38 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:38 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:38 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:38 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:38 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:38 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:38 -0300
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:38 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:38 -0300
+
+
+Started GET "/assets/jobs.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:38 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:38 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:38 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:38 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-07 01:02:40 -0300
+Processing by JobsController#index as HTML
+  [1m[36mJob Load (0.3ms)[0m  [1mSELECT "jobs".* FROM "jobs"   ORDER BY created_at DESC[0m
+  Rendered jobs/index.html.haml within layouts/application (2.3ms)
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories"
+Completed 200 OK in 85ms (Views: 83.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/jobs.css?body=1" for 127.0.0.1 at 2015-03-07 01:02:40 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-07 01:02:40 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:40 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:40 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:40 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:40 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:40 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:40 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:40 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:40 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:40 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:40 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:40 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:40 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:40 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:40 -0300
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:40 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:40 -0300
+
+
+Started GET "/assets/jobs.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:40 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:40 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-07 01:02:45 -0300
+Processing by JobsController#index as HTML
+  [1m[36mJob Load (0.3ms)[0m  [1mSELECT "jobs".* FROM "jobs"   ORDER BY created_at DESC[0m
+  Rendered jobs/index.html.haml within layouts/application (2.0ms)
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories"
+Completed 200 OK in 79ms (Views: 77.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/jobs.css?body=1" for 127.0.0.1 at 2015-03-07 01:02:45 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:45 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:45 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-07 01:02:45 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:45 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:45 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:45 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:45 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:45 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:45 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:45 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:45 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:45 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:45 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:45 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:45 -0300
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:45 -0300
+
+
+Started GET "/assets/jobs.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:45 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:45 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:45 -0300
+
+
+Started GET "/jobs/new" for 127.0.0.1 at 2015-03-07 01:02:50 -0300
+Processing by JobsController#new as HTML
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  Rendered jobs/_form.html.haml (12.2ms)
+  Rendered jobs/new.html.haml within layouts/application (14.2ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "categories".* FROM "categories"
+Completed 200 OK in 103ms (Views: 101.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/jobs.css?body=1" for 127.0.0.1 at 2015-03-07 01:02:50 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:50 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:51 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:51 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-07 01:02:51 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:51 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:51 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:51 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:51 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:51 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:51 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:51 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:51 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:51 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:51 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:51 -0300
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:51 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:51 -0300
+
+
+Started GET "/assets/jobs.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:51 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-07 01:02:51 -0300
+
+
+Started POST "/jobs" for 127.0.0.1 at 2015-03-07 01:03:18 -0300
+Processing by JobsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sLCGL+jqODZYt06L/r55x9qJjO/B/mZq9bqjOgEQOkI=", "job"=>{"title"=>"Tester", "description"=>"sanfoiasnfafniusafbfani", "company"=>"Apple", "url"=>"#"}, "commit"=>"Create Job"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "jobs" ("company", "created_at", "description", "title", "updated_at", "url") VALUES (?, ?, ?, ?, ?, ?)  [["company", "Apple"], ["created_at", "2015-03-07 04:03:18.908435"], ["description", "sanfoiasnfafniusafbfani"], ["title", "Tester"], ["updated_at", "2015-03-07 04:03:18.908435"], ["url", "#"]]
+  [1m[36m (376.9ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/jobs/4
+Completed 302 Found in 383ms (ActiveRecord: 377.4ms)
+
+
+Started GET "/jobs/4" for 127.0.0.1 at 2015-03-07 01:03:19 -0300
+Processing by JobsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mJob Load (0.2ms)[0m  SELECT  "jobs".* FROM "jobs"  WHERE "jobs"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered jobs/show.html.haml within layouts/application (1.1ms)
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 80ms (Views: 77.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/jobs.css?body=1" for 127.0.0.1 at 2015-03-07 01:03:19 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:19 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:19 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:19 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-07 01:03:19 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:19 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:19 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:19 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:19 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:19 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:19 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:19 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:19 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:19 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:19 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:19 -0300
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:19 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:19 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:19 -0300
+
+
+Started GET "/assets/jobs.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:19 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-07 01:03:21 -0300
+Processing by JobsController#index as HTML
+  [1m[35mJob Load (0.4ms)[0m  SELECT "jobs".* FROM "jobs"   ORDER BY created_at DESC
+  Rendered jobs/index.html.haml within layouts/application (3.0ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 109ms (Views: 106.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/jobs.css?body=1" for 127.0.0.1 at 2015-03-07 01:03:22 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-07 01:03:22 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:22 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:22 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:22 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:22 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:22 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:22 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:22 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:22 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:22 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:22 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:22 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:22 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:22 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:22 -0300
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:22 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:22 -0300
+
+
+Started GET "/assets/jobs.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:22 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:22 -0300
+
+
+Started GET "/jobs/new" for 127.0.0.1 at 2015-03-07 01:03:23 -0300
+Processing by JobsController#new as HTML
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered jobs/_form.html.haml (6.6ms)
+  Rendered jobs/new.html.haml within layouts/application (7.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 80ms (Views: 77.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/jobs.css?body=1" for 127.0.0.1 at 2015-03-07 01:03:23 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-07 01:03:23 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:23 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:23 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:23 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:23 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:23 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:23 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:23 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:23 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:23 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:23 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:23 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:23 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:23 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:23 -0300
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:23 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:23 -0300
+
+
+Started GET "/assets/jobs.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:23 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:23 -0300
+
+
+Started POST "/jobs" for 127.0.0.1 at 2015-03-07 01:03:40 -0300
+Processing by JobsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sLCGL+jqODZYt06L/r55x9qJjO/B/mZq9bqjOgEQOkI=", "job"=>{"title"=>"Programer", "description"=>"asdasdasasfasfa", "company"=>"Microsoft", "url"=>"as"}, "commit"=>"Create Job"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "jobs" ("company", "created_at", "description", "title", "updated_at", "url") VALUES (?, ?, ?, ?, ?, ?)[0m  [["company", "Microsoft"], ["created_at", "2015-03-07 04:03:40.472052"], ["description", "asdasdasasfasfa"], ["title", "Programer"], ["updated_at", "2015-03-07 04:03:40.472052"], ["url", "as"]]
+  [1m[35m (244.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/jobs/5
+Completed 302 Found in 249ms (ActiveRecord: 244.6ms)
+
+
+Started GET "/jobs/5" for 127.0.0.1 at 2015-03-07 01:03:40 -0300
+Processing by JobsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mJob Load (0.3ms)[0m  [1mSELECT  "jobs".* FROM "jobs"  WHERE "jobs"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered jobs/show.html.haml within layouts/application (0.7ms)
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories"
+Completed 200 OK in 89ms (Views: 87.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/jobs.css?body=1" for 127.0.0.1 at 2015-03-07 01:03:41 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-07 01:03:41 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:41 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:41 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:41 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:41 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:41 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:41 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:41 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:41 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:41 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:41 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:41 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:41 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:41 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:41 -0300
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:41 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:41 -0300
+
+
+Started GET "/assets/jobs.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:41 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:41 -0300
+
+
+Started GET "/jobs/new" for 127.0.0.1 at 2015-03-07 01:03:44 -0300
+Processing by JobsController#new as HTML
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  Rendered jobs/_form.html.haml (8.7ms)
+  Rendered jobs/new.html.haml within layouts/application (10.3ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "categories".* FROM "categories"
+Completed 200 OK in 80ms (Views: 78.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-07 01:03:44 -0300
+
+
+Started GET "/assets/jobs.css?body=1" for 127.0.0.1 at 2015-03-07 01:03:44 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:44 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:44 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:44 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:44 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:44 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:44 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:44 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:44 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:44 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:44 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:44 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:44 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:44 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:44 -0300
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:45 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:45 -0300
+
+
+Started GET "/assets/jobs.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:45 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-07 01:03:45 -0300
+
+
+Started POST "/jobs" for 127.0.0.1 at 2015-03-07 01:04:04 -0300
+Processing by JobsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sLCGL+jqODZYt06L/r55x9qJjO/B/mZq9bqjOgEQOkI=", "job"=>{"title"=>"Programer", "description"=>"sfajsdfdksfnadsjfbadsjfbahsbfhudsafandsmbuhi", "company"=>"Dell", "url"=>"as"}, "commit"=>"Create Job"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "jobs" ("company", "created_at", "description", "title", "updated_at", "url") VALUES (?, ?, ?, ?, ?, ?)  [["company", "Dell"], ["created_at", "2015-03-07 04:04:04.741301"], ["description", "sfajsdfdksfnadsjfbadsjfbahsbfhudsafandsmbuhi"], ["title", "Programer"], ["updated_at", "2015-03-07 04:04:04.741301"], ["url", "as"]]
+  [1m[36m (235.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/jobs/6
+Completed 302 Found in 241ms (ActiveRecord: 235.9ms)
+
+
+Started GET "/jobs/6" for 127.0.0.1 at 2015-03-07 01:04:04 -0300
+Processing by JobsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mJob Load (0.2ms)[0m  SELECT  "jobs".* FROM "jobs"  WHERE "jobs"."id" = ? LIMIT 1  [["id", 6]]
+  Rendered jobs/show.html.haml within layouts/application (0.5ms)
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 87ms (Views: 85.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/jobs.css?body=1" for 127.0.0.1 at 2015-03-07 01:04:05 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-07 01:04:05 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:05 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:05 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:05 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:05 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:05 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:05 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:05 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:05 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:05 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:05 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:05 -0300
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:05 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:05 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:05 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:05 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:05 -0300
+
+
+Started GET "/assets/jobs.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:05 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:05 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-07 01:04:08 -0300
+Processing by JobsController#index as HTML
+  [1m[35mJob Load (0.4ms)[0m  SELECT "jobs".* FROM "jobs"   ORDER BY created_at DESC
+  Rendered jobs/index.html.haml within layouts/application (3.9ms)
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 92ms (Views: 89.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/jobs.css?body=1" for 127.0.0.1 at 2015-03-07 01:04:08 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-07 01:04:08 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:08 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:08 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:08 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:08 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:08 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:08 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:08 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:08 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:08 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:08 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:08 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:08 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:08 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:08 -0300
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:08 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:08 -0300
+
+
+Started GET "/assets/jobs.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:08 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-07 01:04:08 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-07 01:05:26 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JobsController#index as HTML
+  [1m[35mJob Load (0.2ms)[0m  SELECT "jobs".* FROM "jobs"   ORDER BY created_at DESC
+  Rendered jobs/index.html.haml within layouts/application (9.1ms)
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 175ms (Views: 162.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/jobs.css?body=1" for 127.0.0.1 at 2015-03-07 01:05:27 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-07 01:05:27 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-07 01:05:27 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-07 01:05:27 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-07 01:05:27 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-07 01:05:27 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-07 01:05:27 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-07 01:05:27 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-07 01:05:27 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-07 01:05:27 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-07 01:05:27 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-07 01:05:27 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-07 01:05:27 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-07 01:05:27 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-07 01:05:27 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-07 01:05:27 -0300
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-03-07 01:05:27 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-07 01:05:27 -0300
+
+
+Started GET "/assets/jobs.js?body=1" for 127.0.0.1 at 2015-03-07 01:05:27 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-07 01:05:27 -0300
+
+
+Started GET "/css/bootstrap.min.css" for 127.0.0.1 at 2015-03-11 00:01:18 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (No route matches [GET] "/css/bootstrap.min.css"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/methodoverride.rb:21:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/lock.rb:17:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/content_length.rb:14:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/handler/webrick.rb:60:in `service'
+  /usr/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.9ms)
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (8.3ms)
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (39.8ms)
+
+
+Started GET "/css/sb-admin.css" for 127.0.0.1 at 2015-03-11 00:01:18 -0300
+
+ActionController::RoutingError (No route matches [GET] "/css/sb-admin.css"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/methodoverride.rb:21:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/lock.rb:17:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/content_length.rb:14:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/handler/webrick.rb:60:in `service'
+  /usr/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.9ms)
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.8ms)
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (14.3ms)
+
+
+Started GET "/font-awesome/css/font-awesome.min.css" for 127.0.0.1 at 2015-03-11 00:01:18 -0300
+
+ActionController::RoutingError (No route matches [GET] "/font-awesome/css/font-awesome.min.css"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/methodoverride.rb:21:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/lock.rb:17:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/content_length.rb:14:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/handler/webrick.rb:60:in `service'
+  /usr/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.8ms)
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.0ms)
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (18.1ms)
+
+
+Started GET "/js/jquery.js" for 127.0.0.1 at 2015-03-11 00:01:18 -0300
+
+ActionController::RoutingError (No route matches [GET] "/js/jquery.js"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/methodoverride.rb:21:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/lock.rb:17:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/content_length.rb:14:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/handler/webrick.rb:60:in `service'
+  /usr/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.0ms)
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (15.0ms)
+
+
+Started GET "/js/bootstrap.min.js" for 127.0.0.1 at 2015-03-11 00:01:18 -0300
+
+ActionController::RoutingError (No route matches [GET] "/js/bootstrap.min.js"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/methodoverride.rb:21:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/lock.rb:17:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/content_length.rb:14:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/handler/webrick.rb:60:in `service'
+  /usr/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.8ms)
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (16.1ms)
+
+
+Started GET "/jobs" for 127.0.0.1 at 2015-03-11 00:01:44 -0300
+Processing by JobsController#index as HTML
+  [1m[35mJob Load (0.2ms)[0m  SELECT "jobs".* FROM "jobs"   ORDER BY created_at DESC
+  Rendered jobs/index.html.haml within layouts/application (7.5ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 831ms (Views: 711.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/jobs.css?body=1" for 127.0.0.1 at 2015-03-11 00:01:45 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-11 00:01:45 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-11 00:01:45 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-11 00:01:45 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-11 00:01:45 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-11 00:01:45 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-11 00:01:45 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-11 00:01:45 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-11 00:01:45 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-11 00:01:45 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-11 00:01:45 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-11 00:01:45 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-11 00:01:45 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-11 00:01:45 -0300
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-03-11 00:01:45 -0300
+
+
+Started GET "/assets/jobs.js?body=1" for 127.0.0.1 at 2015-03-11 00:01:45 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-11 00:01:45 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-11 00:01:45 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-11 00:01:45 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-11 00:01:45 -0300
+
+
+Started GET "/js/jquery.js" for 127.0.0.1 at 2015-03-11 00:01:57 -0300
+
+ActionController::RoutingError (No route matches [GET] "/js/jquery.js"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/methodoverride.rb:21:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/lock.rb:17:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/content_length.rb:14:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/handler/webrick.rb:60:in `service'
+  /usr/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.3ms)
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.9ms)
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (27.3ms)
+
+
+Started GET "/js/bootstrap.min.js" for 127.0.0.1 at 2015-03-11 00:01:57 -0300
+
+ActionController::RoutingError (No route matches [GET] "/js/bootstrap.min.js"):
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/methodoverride.rb:21:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/lock.rb:17:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/content_length.rb:14:in `call'
+  /usr/lib/ruby/vendor_ruby/rack/handler/webrick.rb:60:in `service'
+  /usr/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.1ms)
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /var/lib/gems/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (16.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-11 00:43:33 -0300
+Processing by JobsController#index as HTML
+  [1m[35mJob Load (0.2ms)[0m  SELECT "jobs".* FROM "jobs"   ORDER BY created_at DESC
+  Rendered jobs/index.html.haml within layouts/application (1.5ms)
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 112ms (Views: 110.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-11 00:43:33 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-11 00:43:33 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-11 00:43:33 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-11 00:43:36 -0300
+Processing by JobsController#index as HTML
+  [1m[35mJob Load (0.2ms)[0m  SELECT "jobs".* FROM "jobs"   ORDER BY created_at DESC
+  Rendered jobs/index.html.haml within layouts/application (1.7ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 82ms (Views: 80.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-11 00:43:36 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-11 00:43:36 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-11 00:43:36 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-11 00:43:50 -0300
+Processing by JobsController#index as HTML
+  [1m[35mJob Load (0.2ms)[0m  SELECT "jobs".* FROM "jobs"   ORDER BY created_at DESC
+  Rendered jobs/index.html.haml within layouts/application (2.9ms)
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 79ms (Views: 78.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-11 00:43:50 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-11 00:43:50 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-11 00:43:50 -0300
+
+
+Started GET "/jobs/new" for 127.0.0.1 at 2015-03-11 00:43:54 -0300
+Processing by JobsController#new as HTML
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered jobs/_form.html.haml (183.2ms)
+  Rendered jobs/new.html.haml within layouts/application (186.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 266ms (Views: 264.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-11 00:43:54 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-11 00:43:54 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-11 00:43:54 -0300
+
+
+Started GET "/jobs/" for 127.0.0.1 at 2015-03-11 01:05:42 -0300
+Processing by JobsController#index as HTML
+  [1m[35mJob Load (0.3ms)[0m  SELECT "jobs".* FROM "jobs"   ORDER BY created_at DESC
+  Rendered jobs/index.html.haml within layouts/application (2.1ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 87ms (Views: 85.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-11 01:05:42 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-11 01:05:42 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-03-11 01:05:42 -0300
